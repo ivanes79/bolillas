@@ -31,4 +31,4 @@ print(bola5.x)
 print(bola6.y)
 print(bola3.ancho)
 print(bola2.largo)   
-''' 
+'''

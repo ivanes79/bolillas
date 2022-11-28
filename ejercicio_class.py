@@ -1,4 +1,4 @@
-'''
+
 from clase_bolas import BolasLocas
 import pygame as pg
 
@@ -65,4 +65,3 @@ while not game_over:#bucle para ejecutar los fotogramas para el repintado de la 
 
 
 pg.quit
-'''
