@@ -21,11 +21,10 @@ vy = 1
 '''
 game_over = False
 contador = 0
-x = 400
-y = 300
-vx = 1
-vy = 1
-bola1 = BolasLocas(400,300,20,20)
+
+bola1 = BolasLocas(400,300)
+bola1 = BolasLocas(200,500,color = (192,))
+
 while not game_over:#bucle para ejecutar los fotogramas para el repintado de la pantalla
 
     for eventos in pg.event.get():# captura todos los eventos de pygame en forma de lista

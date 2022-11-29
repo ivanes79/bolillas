@@ -1,65 +1,49 @@
 import pygame as pg
+from all_inclusive_class import Figura
+from figura_class import Rectangulo,Bolillas
+import random
+##
 
-#inicializar todos los modulos de pygame
-#pantallas,sonidos,teclados,etc
+
 pg.init()
 
-#creamos una pantalla o surface
-pantalla_principal = pg.display.set_mode( (800,600) )# ventana y tamaño de ventana
-pg.display.set_caption("Bolillas rebotando")# titulo de la ventana
+pantalla_principal = pg.display.set_mode( (800,600) )
+pg.display.set_caption("Bolillas Rebotando")
 
-#es una variable para controlar el bucle
+#rect1 = Rectangulo(random.randint(0,800),random.randint(0,600),w=random.randint(10,40),h=random.randint(10,40))
+#rect2 = Rectangulo(random.randint(0,800),random.randint(0,600),color=(192, 57, 43),w=random.randint(10,40),h=random.randint(10,40))
+listaBolillas=[]
+for i in range(1,101):
+    listaBolillas.append(Figura(random.randint(0,800),random.randint(0,600),color=(random.randint(0,255), random.randint(0,255), random.randint(0,255)),radio=random.randint(5,30)) ) 
+
+
+#bolilla1=Bolillas(random.randint(0,800),random.randint(0,600),radio=random.randint(10,40))
+#bolilla2 = Bolillas(random.randint(0,800),random.randint(0,600),color=(192, 57, 43),radio=random.randint(10,40))
+
 game_over = False
-contador = 0
-x = 400
-y = 300
-vx = 1
-vy = 1
-
-
-
-while not game_over:#bucle para ejecutar los fotogramas para el repintado de la pantalla
-
-    for eventos in pg.event.get():# captura todos los eventos de pygame en forma de lista
+while not game_over:
+    for eventos in pg.event.get():
         print(eventos)
-        if eventos.type == pg.QUIT:#controlar que pare el bucle
+        if eventos.type == pg.QUIT:
             game_over = True
+    
+    pantalla_principal.fill( ( 52, 152, 219 ) )
 
-    pantalla_principal.fill( (73, 162, 240) )#asigna un color a la pantalla
-    #hay que poner lo que queramos antes del display.flip
-    x += vx
-    y += vy
-    if x >= 800 or x == 0:#llegue a los limites
-        vx = vx * -1 
-    if y >= 600 or y == 0:
-        vy = vy * -1
-
-
-
-
-    ''' 
-    if x != 780:
-        x += 1
-    if y != 580:
-        y += 1
+    for bolilla in listaBolillas:
+        bolilla.moverCirculo(800,600)
+        bolilla.dibujarCirculo(pantalla_principal)
     '''
+    rect1.mover(800,600)
+    rect2.mover(800,600)
+    bolilla1.mover(800,600)
+    bolilla2.mover(800,600)
 
-
-
-    #la surface o pantalla #color en rgb  #posicion(posicion(ancho y largo) y dimensiones(ancho y largo)
-    pg.draw.rect(pantalla_principal,(250, 248, 55),(x,y,20,20))
-  
-    #metodo para definir un cuadrado
-
-    pg.display.flip()#para activar el color que le hemos asignado con rgb
-
-    contador += 1
-
-
-
-
-pg.quit
-
-
-
-     
+    bolilla1.dibujar(pantalla_principal)
+    bolilla2.dibujar(pantalla_principal)
+    rect1.dibujar(pantalla_principal)
+    rect2.dibujar(pantalla_principal)
+    '''
+    pg.display.flip()
+ 
+    
+pg.quit()
